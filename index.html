@@ -3,115 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Recruitment Company | Connecting Schools with Talent</title>
+    <title>Teacher Recruitment Company | Connecting Schools with Top Talent</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         /* --- CSS VARIABLES & RESET --- */
         :root {
-            --primary: #1e3a8a; /* Deep Navy from brochure vibe */
-            --accent: #d61c62; /* The Pink/Magenta from brochure corners */
-            --light: #f8f9fa;
-            --dark: #1f2937;
+            /* Colors extracted from your brochure requirements */
+            --primary: #1e3a8a; /* Navy Blue */
+            --accent: #d61c62;  /* Magenta/Pink */
+            --light: #f3f4f6;
+            --dark: #111827;
             --text-gray: #4b5563;
             --white: #ffffff;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
-        body { color: var(--dark); line-height: 1.6; background-color: var(--white); }
+        body { color: var(--dark); line-height: 1.7; background-color: var(--white); overflow-x: hidden; }
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
         img { max-width: 100%; display: block; }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .section-padding { padding: 80px 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+        .section-padding { padding: 100px 0; }
         .text-center { text-align: center; }
-        .btn { display: inline-block; padding: 12px 30px; border-radius: 50px; font-weight: 600; cursor: pointer; border: none; }
-        .btn-primary { background-color: var(--accent); color: var(--white); }
-        .btn-primary:hover { background-color: #b01550; transform: translateY(-2px); }
-        .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
-        .btn-outline:hover { background-color: var(--primary); color: var(--white); }
+        
+        /* Buttons */
+        .btn { display: inline-block; padding: 14px 35px; border-radius: 50px; font-weight: 600; cursor: pointer; border: none; transition: all 0.3s ease; letter-spacing: 0.5px; }
+        .btn-primary { background: linear-gradient(45deg, var(--accent), #b01550); color: var(--white); box-shadow: 0 4px 15px rgba(214, 28, 98, 0.3); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(214, 28, 98, 0.4); }
+        .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
+        .btn-outline:hover { background-color: var(--primary); color: var(--white); transform: translateY(-3px); }
 
         /* --- HEADER --- */
-        header { background: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
-        nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
-        .logo { font-size: 24px; font-weight: bold; color: var(--primary); display: flex; align-items: center; gap: 10px; }
-        .logo img { height: 50px; }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { font-weight: 500; color: var(--dark); }
+        header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 90px; }
+        .logo { font-size: 26px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 12px; letter-spacing: -1px; }
+        .logo img { height: 55px; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { font-weight: 500; color: var(--dark); position: relative; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--accent); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
         .nav-links a:hover { color: var(--accent); }
 
         /* --- HERO --- */
-        .hero { background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.8)), url('h1.png') no-repeat center center/cover; color: var(--white); padding: 100px 0; min-height: 80vh; display: flex; align-items: center; }
-        .hero-content { max-width: 700px; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2; }
-        .hero p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
+        .hero { 
+            /* Using linear gradient over the image for better text readability */
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(214, 28, 98, 0.8) 100%), url('images/h1.png');
+            background-size: cover;
+            background-position: center;
+            color: var(--white); 
+            padding: 160px 0 120px; 
+            min-height: 90vh; 
+            display: flex; 
+            align-items: center; 
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .hero h1 { font-size: 4rem; margin-bottom: 25px; line-height: 1.1; font-weight: 700; }
+        .hero p { font-size: 1.3rem; margin-bottom: 40px; opacity: 0.95; font-weight: 300; max-width: 600px; }
 
         /* --- ABOUT --- */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-        .about-text h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
-        .about-img img { border-radius: 20px; box-shadow: var(--shadow); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+        .about-text h2 { font-size: 2.8rem; color: var(--primary); margin-bottom: 25px; line-height: 1.2; }
+        .about-img img { border-radius: 20px; box-shadow: var(--shadow); transition: transform 0.5s; }
+        .about-img:hover img { transform: scale(1.02); }
 
         /* --- SERVICES (Cards) --- */
         .bg-light { background-color: var(--light); }
-        .section-title { margin-bottom: 50px; }
-        .section-title h2 { font-size: 2.5rem; color: var(--primary); }
-        .section-title p { color: var(--accent); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .section-header { margin-bottom: 70px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--primary); margin-top: 10px; }
+        .section-header span { color: var(--accent); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
         
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .service-card { background: var(--white); padding: 30px; border-radius: 10px; box-shadow: var(--shadow); transition: 0.3s; border-bottom: 4px solid transparent; }
-        .service-card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--accent); }
-        .service-icon { font-size: 40px; margin-bottom: 20px; color: var(--accent); }
-        .service-card h3 { margin-bottom: 15px; color: var(--primary); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+        .service-card { background: var(--white); padding: 40px 30px; border-radius: 15px; box-shadow: var(--shadow); transition: 0.4s; border: 1px solid rgba(0,0,0,0.03); position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: 0.4s; }
+        .service-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-icon { font-size: 45px; margin-bottom: 25px; display: inline-block; background: #fff0f6; padding: 15px; border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
+        .service-card h3 { margin-bottom: 15px; color: var(--primary); font-size: 1.4rem; }
 
-        /* --- WHO WE WORK WITH (Pill Styles) --- */
-        .clients-wrapper { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
-        .client-pill { background: var(--white); border: 1px solid #ddd; padding: 15px 30px; border-radius: 50px; font-weight: 600; color: var(--text-gray); box-shadow: var(--shadow); }
+        /* --- CLIENTS PILLS --- */
+        .clients-wrapper { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 35px; }
+        .client-pill { background: #e0e7ff; color: var(--primary); padding: 10px 25px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; }
 
-        /* --- PROCESS --- */
-        .process-steps { display: flex; justify-content: space-between; text-align: center; gap: 30px; position: relative; }
-        .step { flex: 1; padding: 20px; position: relative; z-index: 2; }
-        .step-number { background: var(--accent); color: var(--white); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; margin: 0 auto 20px; }
-        .step h3 { margin-bottom: 15px; color: var(--primary); }
+        /* --- JOB BOARD (Sample Data) --- */
+        .job-list { max-width: 900px; margin: 0 auto; }
+        .job-item { display: flex; justify-content: space-between; align-items: center; padding: 30px; background: var(--white); border: 1px solid #eee; margin-bottom: 20px; border-radius: 12px; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .job-item:hover { border-color: var(--accent); transform: scale(1.01); box-shadow: var(--shadow); }
+        .job-title h4 { color: var(--primary); font-size: 1.3rem; margin-bottom: 5px; }
+        .job-meta { display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-gray); }
+        .apply-btn { padding: 8px 20px; background: var(--light); color: var(--primary); border-radius: 5px; font-weight: 600; font-size: 0.9rem; }
+        .job-item:hover .apply-btn { background: var(--accent); color: var(--white); }
 
-        /* --- SAMPLE DATA: RECENT JOBS --- */
-        .job-board { background: var(--white); }
-        .job-list { max-width: 800px; margin: 0 auto; }
-        .job-item { display: flex; justify-content: space-between; align-items: center; padding: 20px; border: 1px solid #eee; margin-bottom: 15px; border-radius: 8px; transition: 0.2s; }
-        .job-item:hover { border-color: var(--accent); background: #fff0f6; }
-        .job-info h4 { color: var(--primary); font-size: 1.2rem; }
-        .job-info span { font-size: 0.9rem; color: var(--text-gray); margin-right: 15px; }
-        .tag { background: #e0e7ff; color: var(--primary); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
-
-        /* --- WHY CHOOSE US --- */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .feature-item { display: flex; gap: 20px; align-items: flex-start; }
-        .check-icon { color: var(--accent); font-size: 24px; flex-shrink: 0; }
+        /* --- FEATURES --- */
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 30px; }
+        .feature-item { display: flex; gap: 20px; }
+        .check-icon { color: var(--accent); font-size: 24px; background: #fff0f6; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
         /* --- CONTACT --- */
-        .contact-section { background: var(--primary); color: var(--white); }
-        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-        .contact-info h2 { font-size: 2.5rem; margin-bottom: 20px; }
-        .contact-details p { margin-bottom: 10px; font-size: 1.1rem; }
+        .contact-section { background: var(--dark); color: var(--white); position: relative; overflow: hidden; }
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 2; }
+        .contact-info h2 { font-size: 3rem; margin-bottom: 20px; }
+        .contact-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 15px; margin-top: 30px; border: 1px solid rgba(255,255,255,0.1); }
         
-        /* Formspree Form Styling */
-        .contact-form { background: var(--white); padding: 40px; border-radius: 15px; color: var(--dark); }
+        .contact-form { background: var(--white); padding: 50px; border-radius: 20px; color: var(--dark); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
-        .form-group textarea { height: 120px; resize: none; }
+        .form-group label { display: block; margin-bottom: 10px; font-weight: 600; font-size: 0.9rem; color: var(--text-gray); }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 15px; border: 2px solid #f3f4f6; border-radius: 8px; font-size: 16px; transition: 0.3s; background: #f9fafb; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); background: var(--white); outline: none; }
+        .form-group textarea { height: 140px; resize: none; }
 
         /* --- FOOTER --- */
-        footer { background: var(--dark); color: var(--white); padding: 50px 0 20px; text-align: center; }
-        .footer-content { margin-bottom: 30px; }
-        .copyright { border-top: 1px solid #374151; padding-top: 20px; font-size: 0.9rem; color: #9ca3af; }
+        footer { background: #0f172a; color: #94a3b8; padding: 60px 0 30px; text-align: center; }
+        .footer-logo { font-size: 24px; color: var(--white); font-weight: bold; margin-bottom: 15px; display: inline-block; }
 
         /* --- MOBILE --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .about-grid, .process-steps, .contact-container { grid-template-columns: 1fr; display: grid; }
-            .nav-links { display: none; } /* Simplified for demo */
-            .process-steps { gap: 40px; }
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 3rem; }
+            .about-grid, .contact-container, .features-grid { grid-template-columns: 1fr; }
+            .hero { padding-top: 120px; text-align: center; }
+            .hero p { margin: 0 auto 40px; }
+            .about-img { order: -1; margin-bottom: 30px; }
+            .nav-links { display: none; } 
         }
     </style>
 </head>
@@ -121,46 +139,66 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <img src="logo.png" alt="TRC Logo"> 
+                    <img src="images/logo.png" alt="TRC Logo"> 
                     TRC
                 </div>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#jobs">Jobs</a></li>
-                    <li><a href="#contact" class="btn btn-primary">Hiring? Contact Us</a></li>
+                    <li><a href="#jobs">Job Board</a></li>
+                    <li><a href="#contact" class="btn btn-primary">Get Started</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <section class="hero">
-        <div class="container hero-content">
-            [cite_start]<h1>Connecting Schools with Top Talent [cite: 2]</h1>
-            [cite_start]<p>We make hiring simple, fast, and affordable for educational institutions across India. [cite: 5]</p>
+        <div class="container hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1>Connecting Schools with <br><span style="color: #ff4d8d;">Top Talent</span></h1>
+            <p>We specialize in connecting preschools & schools with exceptional teaching & administrative talent across India.</p>
             <div class="cta-group">
                 <a href="#contact" class="btn btn-primary">Find Teachers</a>
-                <a href="#jobs" class="btn btn-outline" style="border-color: white; color: white; margin-left: 10px;">Find a Job</a>
+                <a href="#jobs" class="btn btn-outline" style="border-color: white; color: white; margin-left: 15px;">Find a Job</a>
             </div>
         </div>
     </section>
 
     <section id="about" class="section-padding">
         <div class="container about-grid">
-            <div class="about-img">
-                <img src="h2.png" alt="Partnership Handshake">
+            <div class="about-img" data-aos="fade-right">
+                <img src="images/h2.png" alt="Partnership Handshake">
             </div>
-            <div class="about-text">
-                [cite_start]<p style="color: var(--accent); font-weight: bold;">ABOUT US [cite: 3]</p>
-                <h2>We Specialize in Education Recruitment</h2>
-                <p>At TRC, we specialize in connecting preschools & schools with exceptional teaching & administrative talent. [cite_start]With our extensive network & industry expertise, we ensure your institution gets the best professionals.</p> [cite: 4, 5]
+            <div class="about-text" data-aos="fade-left">
+                <p style="color: var(--accent); font-weight: 800; letter-spacing: 2px;">ABOUT US</p>
+                <h2>Simplified Recruitment for Educational Institutions</h2>
+                <p>At TRC, we make hiring simple, fast, and affordable. With our extensive network and industry expertise, we ensure your institution gets the best professionals without the hassle.</p>
                 
-                <div style="margin-top: 30px;">
-                    [cite_start]<strong>Who We Work With:</strong> [cite: 23]
-                    <div class="clients-wrapper" style="justify-content: flex-start;">
-                        [cite_start]<span class="client-pill">Preschools</span> [cite: 24]
-                        [cite_start]<span class="client-pill">Primary & Secondary</span> [cite: 25]
-                        [cite_start]<span class="client-pill">Private & Public</span> [cite: 26]
+                <div style="margin-top: 35px;">
+                    <strong>Who We Work With:</strong>
+                    <div class="clients-wrapper">
+                        <span class="client-pill">Preschools</span>
+                        <span class="client-pill">Primary Schools</span>
+                        <span class="client-pill">Secondary Schools</span>
+                        <span class="client-pill">Public Institutions</span>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="check-icon">✓</div>
+                        <p>Verified Candidates</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="check-icon">✓</div>
+                        <p>Quick Turnaround</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="check-icon">✓</div>
+                        <p>Personalized Process</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="check-icon">✓</div>
+                        <p>Proven Track Record</p>
                     </div>
                 </div>
             </div>
@@ -169,30 +207,30 @@
 
     <section id="services" class="section-padding bg-light">
         <div class="container">
-            <div class="text-center section-title">
-                [cite_start]<p>OUR SERVICES [cite: 6]</p>
-                <h2>Comprehensive Hiring Solutions</h2>
+            <div class="text-center section-header" data-aos="fade-up">
+                <span>OUR EXPERTISE</span>
+                <h2>Comprehensive Services</h2>
             </div>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-icon">👩‍🏫</div>
                     <h3>Teaching Staff</h3>
-                    [cite_start]<p>Qualified, experienced, and passionate teachers for every grade level.</p> [cite: 8, 9]
+                    <p>Qualified, experienced, and passionate teachers for every grade level and subject.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">💼</div>
-                    <h3>Administrative Staff</h3>
-                    [cite_start]<p>Skilled admin professionals to support your school operations efficiently.</p> [cite: 10, 11]
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Admin Staff</h3>
+                    <p>Skilled professionals to handle school operations, management, and coordination.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🌍</div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">🇮🇳</div>
                     <h3>Pan-India Hiring</h3>
-                    [cite_start]<p>Access to verified talent from every corner of the country.</p> [cite: 12, 13]
+                    <p>Access to a vast talent pool from every corner of the country, ensuring the best fit.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">💰</div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">💎</div>
                     <h3>Affordable Solutions</h3>
-                    [cite_start]<p>Premium recruitment services provided at nominal charges.</p> [cite: 14, 15]
+                    <p>Premium recruitment services provided at nominal charges for institutions.</p>
                 </div>
             </div>
         </div>
@@ -200,127 +238,68 @@
 
     <section id="jobs" class="section-padding">
         <div class="container">
-            <div class="text-center section-title">
-                <p>CURRENT OPENINGS</p>
+            <div class="text-center section-header" data-aos="fade-up">
+                <span>OPEN POSITIONS</span>
                 <h2>Latest Opportunities</h2>
             </div>
             <div class="job-list">
-                <div class="job-item">
-                    <div class="job-info">
+                <div class="job-item" data-aos="fade-up">
+                    <div class="job-title">
                         <h4>PGT Mathematics</h4>
-                        <span><i style="color:var(--accent)">📍</i> Bangalore, India</span>
-                        <span><i style="color:var(--accent)">🏫</i> International School</span>
+                        <div class="job-meta">
+                            <span>📍 Bangalore</span>
+                            <span>🏫 International School</span>
+                            <span>📅 Posted 2 days ago</span>
+                        </div>
                     </div>
-                    <div class="tag">Full Time</div>
+                    <div class="apply-btn">Apply Now</div>
                 </div>
-                <div class="job-item">
-                    <div class="job-info">
+                <div class="job-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="job-title">
                         <h4>Pre-Primary Coordinator</h4>
-                        <span><i style="color:var(--accent)">📍</i> Mumbai, India</span>
-                        <span><i style="color:var(--accent)">🏫</i> Private Preschool</span>
+                        <div class="job-meta">
+                            <span>📍 Mumbai</span>
+                            <span>🏫 Private Preschool</span>
+                            <span>📅 Posted 5 days ago</span>
+                        </div>
                     </div>
-                    <div class="tag">Urgent</div>
+                    <div class="apply-btn">Apply Now</div>
                 </div>
-                <div class="job-item">
-                    <div class="job-info">
+                <div class="job-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="job-title">
                         <h4>School Administrator</h4>
-                        <span><i style="color:var(--accent)">📍</i> Delhi NCR</span>
-                        <span><i style="color:var(--accent)">🏫</i> Public School</span>
-                    </div>
-                    <div class="tag">Admin</div>
-                </div>
-            </div>
-            <div class="text-center" style="margin-top: 20px;">
-                <a href="#" class="btn btn-outline">View All Jobs</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding bg-light">
-        <div class="container">
-            <div class="text-center section-title">
-                <p>HOW IT WORKS</p>
-                [cite_start]<h2>Our Recruitment Process</h2> [cite: 27]
-            </div>
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">01</div>
-                    <h3>Understanding Requirement</h3>
-                    [cite_start]<p>We connect with you to understand the role, skills, and experience needed.</p> [cite: 28, 29]
-                </div>
-                <div class="step">
-                    <div class="step-number">02</div>
-                    <h3>Search & Shortlisting</h3>
-                    [cite_start]<p>We screen, verify, and shortlist the best candidates for your specific needs.</p> [cite: 30, 32]
-                </div>
-                <div class="step">
-                    <div class="step-number">03</div>
-                    <h3>Interviews & Selection</h3>
-                    [cite_start]<p>We coordinate interviews, assist in negotiations, and ensure smooth onboarding.</p> [cite: 33, 35]
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-padding">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-text">
-                    [cite_start]<h2>Why Choose TRC? [cite: 16]</h2>
-                    <div class="features-grid" style="grid-template-columns: 1fr;">
-                        <div class="feature-item">
-                            <div class="check-icon">✓</div>
-                            [cite_start]<p>Extensive database of verified candidates [cite: 17]</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="check-icon">✓</div>
-                            [cite_start]<p>Personalized recruitment process [cite: 18]</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="check-icon">✓</div>
-                            [cite_start]<p>Quick turnaround time for hiring [cite: 19]</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="check-icon">✓</div>
-                            [cite_start]<p>Strong track record with multiple schools [cite: 21]</p>
+                        <div class="job-meta">
+                            <span>📍 Delhi NCR</span>
+                            <span>🏫 Public School</span>
+                            <span>📅 Posted 1 week ago</span>
                         </div>
                     </div>
+                    <div class="apply-btn">Apply Now</div>
                 </div>
-                <div class="impact-box" style="background: var(--primary); color: white; padding: 40px; border-radius: 20px;">
-                    [cite_start]<h3>Our Impact So Far [cite: 36]</h3>
-                    <ul style="margin-top: 20px;">
-                        <li style="margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px;">
-                            [cite_start]<strong>Partnered</strong> with dozens of schools nationwide [cite: 37]
-                        </li>
-                        <li style="margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px;">
-                            [cite_start]<strong>Helped</strong> hundreds of candidates find the right role [cite: 38]
-                        </li>
-                        <li>
-                            [cite_start]<strong>Trusted</strong> recruitment partner for new and established schools [cite: 39]
-                        </li>
-                    </ul>
-                </div>
+            </div>
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="#" class="btn btn-outline">View All Openings</a>
             </div>
         </div>
     </section>
 
     <section id="contact" class="contact-section section-padding">
         <div class="container contact-container">
-            <div class="contact-info">
-                [cite_start]<h2>Let's Connect [cite: 40]</h2>
-                <p>Ready to hire the best talent? Or looking for your next teaching role? Fill out the form and we will get back to you immediately.</p>
-                <br>
-                <div class="contact-details">
-                    [cite_start]<p><strong>Email:</strong> teacherrecruitmentcompanyhr@gmail.com [cite: 41]</p>
-                    [cite_start]<p><strong>Phone:</strong> +91 91670 38824 [cite: 41]</p>
+            <div class="contact-info" data-aos="fade-right">
+                <h2>Let's Build Your Dream Team</h2>
+                <p>Whether you are a school looking for talent or a teacher looking for a job, we are here to help.</p>
+                
+                <div class="contact-card">
+                    <p style="margin-bottom: 15px;"><strong>📧 Email Us:</strong><br>teacherrecruitmentcompanyhr@gmail.com</p>
+                    <p><strong>📞 Call Us:</strong><br>+91 91670 38824</p>
                 </div>
             </div>
 
-            <div class="contact-form">
+            <div class="contact-form" data-aos="fade-left">
                 <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="name" placeholder="Your Name" required>
+                        <label>Your Name</label>
+                        <input type="text" name="name" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
                         <label>I am a...</label>
@@ -331,11 +310,11 @@
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="email" name="email" placeholder="john@example.com" required>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea name="message" placeholder="Tell us about your requirement..."></textarea>
+                        <textarea name="message" placeholder="How can we help you?"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
                 </form>
@@ -345,15 +324,21 @@
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <h3>Teacher Recruitment Company</h3>
-                <p>Connecting Schools with Top Talent</p>
-            </div>
-            <div class="copyright">
+            <div class="footer-logo">TRC</div>
+            <p>Connecting Schools with Top Talent</p>
+            <div style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">
                 &copy; 2025 Teacher Recruitment Company. All Rights Reserved.
             </div>
         </div>
     </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true, /* Animation happens only once - while scrolling down */
+            offset: 100 /* Trigger animation 100px before element is visible */
+        });
+    </script>
 
 </body>
 </html>
